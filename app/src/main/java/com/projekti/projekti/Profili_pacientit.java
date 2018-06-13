@@ -76,7 +76,7 @@ public class Profili_pacientit extends AppCompatActivity  {
         //editText=(EditText)findViewById(R.id.displayName);
 
         //progressBar=findViewById(R.id.progress_bar);
-
+//e kom myt ni mickoj ne ekran sa mire qe spo ta zen pamjen ty ahhaha. Hahahahaha ewwwww, qu heke!!!!hahahah (se qat pjese spe shoh)
        /* btnRezervo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
