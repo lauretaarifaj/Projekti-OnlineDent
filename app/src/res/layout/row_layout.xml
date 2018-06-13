@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="12dp"
+    android:layout_margin="10dp"
+    android:elevation="90dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:background="#555">
+        <ImageView
+            android:id="@+id/docImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitStart"
+            android:src="@drawable/doc"/>
+
+        <TextView
+            android:id="@+id/tvEmri"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="11dp"
+            android:layout_toEndOf="@+id/docImage"
+            android:text="Emri" />
+
+        <TextView
+            android:id="@+id/tvSpecializimi"
+            android:textColor="#FFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvEmri"
+            android:layout_below="@+id/tvEmri"
+            android:layout_marginTop="25dp"
+            android:text="Specializimi" />
+
+
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

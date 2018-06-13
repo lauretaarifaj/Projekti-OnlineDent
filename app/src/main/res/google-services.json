@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "371846409619",
+    "firebase_url": "https://projekti-3e530.firebaseio.com",
+    "project_id": "projekti-3e530",
+    "storage_bucket": "projekti-3e530.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371846409619:android:1d6e756be6acef7a",
+        "android_client_info": {
+          "package_name": "com.projekti.projekti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371846409619-cgj96vqajdli2cmaae0q02lapsd5ncc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI8Y3SzHl-YF1mIiH2621BQH887wYRRmU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="122dp"
+        android:layout_height="103dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/logofinal" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginTop="25dp"
+        android:drawableLeft="@drawable/ic_action_person"
+        android:hint="Email"
+        android:inputType="text"
+        android:textColor="#fff"
+        android:textColorHint="#fff" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:drawableLeft="@drawable/ic_action_pass"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#fff"
+        android:textColorHint="#fff" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember Me"
+        android:textColor="#fff"
+        android:layout_marginTop="8dp"
+        />
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="345dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/background_login"
+        android:text="Log In"
+        android:textColor="#f16f7d"
+        android:textSize="18sp"
+
+        />
+
+    <Button
+        android:id="@+id/btnRegisterPacient"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/backgound_signup"
+        android:text="Register as Pacient"
+        android:textColor="#fff"
+        android:textSize="18sp"
+
+        />
+
+    <Button
+        android:id="@+id/btnRegisterDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/backgound_signup"
+        android:text="Register as doctor"
+        android:textColor="#fff"
+        android:textSize="18sp"
+
+        />
+
+    <TextView
+        android:id="@+id/txtRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forget your password?"
+        android:textColor="#fff"
+        android:textSize="14dp" />
+
+</LinearLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:orientation="vertical"
+    android:background="@drawable/gradient"
+    tools:context="com.projekti.projekti.doctor_view">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/relativeLayout">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfil"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_menu_camera" />
+
+        <TextView
+            android:id="@+id/displayDocName"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progress_bar"
+            android:layout_centerHorizontal="true"
+            android:hint="Username"
+            android:textColorHint="#FFF"
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/emailDoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/displayDocName"
+            android:layout_below="@+id/displayDocName"
+            android:layout_marginTop="12dp"
+            android:text="Email"
+            android:textStyle="italic"
+            android:textColor="#FFF"
+            android:textSize="16sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/Appoint"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Profili"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:text="Add an appointmment"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/docLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Appoint"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Location"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/Appointments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Appointments"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/Logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/Appointments"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="Logout"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/Profili"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Logout"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_marginTop="43dp"
+        android:scaleType="centerCrop"
+        android:text="Update Profile"
+        android:textColor="#FFF" />
+
+
+</RelativeLayout>

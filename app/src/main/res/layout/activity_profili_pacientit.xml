@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:orientation="vertical"
+    android:background="@drawable/gradient"
+    tools:context="com.projekti.projekti.Profili_pacientit">
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        android:id="@+id/relativeLayout2">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fotoProfil"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_menu_camera" />
+
+        <TextView
+            android:id="@+id/displayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progress_bar"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/fotoProfil"
+            android:text="Username"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFF" />
+
+        <TextView
+            android:id="@+id/emailPac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/displayName"
+            android:layout_below="@+id/displayName"
+            android:layout_marginTop="12dp"
+            android:text="Email"
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="italic" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tvAppoint"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfili"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Appoint a docor"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/tvAppointments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignEnd="@+id/tvProfili"
+        android:layout_below="@+id/tvAppoint"
+        android:layout_marginTop="32dp"
+        android:text="Appointments"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/tvLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/tvAppointments"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="Logout"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/tvProfili"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvAppoint"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginTop="59dp"
+        android:scaleType="centerCrop"
+        android:text="Update Profile"
+        android:textColor="#FFF" />
+
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "91052320332",
+    "firebase_url": "https://projektiandroid.firebaseio.com",
+    "project_id": "projektiandroid",
+    "storage_bucket": "projektiandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91052320332:android:1d6e756be6acef7a",
+        "android_client_info": {
+          "package_name": "com.projekti.projekti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91052320332-tfd89gctd66c98gqg75qf1eba7v8gr6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7C71MSq9t81rRbXwqoVH1RlRVaG4ggGY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

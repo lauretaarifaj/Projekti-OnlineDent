@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/doc" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="26dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:text="Emri"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvlastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvHospital"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@+id/tvHospital"
+        android:text="TextView"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvHospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvName"
+        android:layout_below="@+id/tvName"
+        android:layout_marginTop="11dp"
+        android:text="Spitali"
+        android:textColor="#FFF"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/tvSpeciality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvHospital"
+        android:layout_below="@+id/tvHospital"
+        android:layout_marginTop="11dp"
+        android:text="Speci"
+        android:textColor="#FFF"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvSpeciality"
+        android:layout_below="@+id/tvSpeciality"
+        android:layout_marginTop="12dp"
+        android:text="Phone"
+        android:textColor="#FFF"
+        android:textSize="16dp" />
+
+
+    <Button
+        android:id="@+id/appoint"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvPhone"
+        android:layout_marginTop="31dp"
+        android:textColor="#FFF"
+        android:background="@drawable/backgound_signup"
+        android:text="APPOINT" />
+
+</RelativeLayout>
