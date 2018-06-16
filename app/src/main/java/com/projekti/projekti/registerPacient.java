@@ -38,6 +38,7 @@ public class registerPacient extends AppCompatActivity implements View.OnClickLi
         databaseReference= FirebaseDatabase.getInstance().getReference();
 
 
+
         btnregisterPacient=(Button) findViewById(R.id.btnRegisterPacient);
 
         etemail=(EditText)findViewById(R.id.etEmail);
@@ -82,6 +83,7 @@ public class registerPacient extends AppCompatActivity implements View.OnClickLi
                         }
                     });
         }
+
 
 
 

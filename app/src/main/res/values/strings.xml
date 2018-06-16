@@ -2,6 +2,7 @@
     <string name="app_name">Projekti</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="api_key">AIzaSyAaV8VE4nLsTODnmbfdtn_S9DFbcZ23hCI</string>
     <string name="title_activity_profile">ProfileActivity</string>
     ==
     <string name="action_settings">Settings</string>
@@ -11,6 +12,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
 
     color colorString;
 </resources>

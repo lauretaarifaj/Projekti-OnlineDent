@@ -34,6 +34,7 @@ public class registerDoctor extends AppCompatActivity implements View.OnClickLis
         databaseReference= FirebaseDatabase.getInstance().getReference();
 
 
+
         btnregisterPacient=(Button) findViewById(R.id.btnRegisterPacient);
 
         etemail=(EditText)findViewById(R.id.etEmail);

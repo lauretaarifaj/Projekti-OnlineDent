@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //databaseReference=FirebaseDatabase.getInstance().getReference("doctor");
         firebaseAuth=FirebaseAuth.getInstance();
 
-        if(firebaseAuth.getCurrentUser()!= null){
+       /* if(firebaseAuth.getCurrentUser()!= null){
             //profile activity
             finish();
            startActivity(new Intent(getApplicationContext(),doctor_view.class));
-        }
+        }*/
 
         //progressDialog=new ProgressDialog(this);
        btnlogin = (Button) findViewById(R.id.btnLogin);
@@ -96,11 +96,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             //startActivity(new Intent(getApplicationContext(),doctor_view.class));
 
                             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                            String userID=currentUser.getUid();
+                            databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+
+
                             databaseReference.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    finish();
-                                startActivity(new Intent(MainActivity.this,doctor_view.class));
+                                   // finish();
+                                //startActivity(new Intent(MainActivity.this,doctor_view.class));
+
+                                    String userType = dataSnapshot.child("type").getValue().toString();
+                                    if(userType.equals("pacient")){
+                                        Intent intentResident = new Intent(MainActivity.this, Profili_pacientit.class);
+                                        intentResident.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intentResident);
+                                        //finish();
+
+                                    }else if (userType.equals("doctor")){
+                                        Intent intentResident = new Intent(MainActivity.this, doctor_view.class);
+                                        intentResident.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intentResident);
+                                        //finish();
+
+                                    }
+
 
                                 }
 

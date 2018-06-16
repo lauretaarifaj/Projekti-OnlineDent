@@ -5,9 +5,9 @@ package com.projekti.projekti;
  */
 
 public class DocInfo {
-    public String firstName,lastName,address,phone,speciality,hospital,type,url,id;
+    public String firstName,lastName,address,phone,speciality,hospital,type,url,id,email;
 
-    public DocInfo(String firstName, String lastName, String address, String phone,String speciality, String hospital,String type,String url,String id) {
+    public DocInfo(String firstName, String lastName, String address, String phone,String speciality, String hospital,String type,String url,String id,String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -17,6 +17,7 @@ public class DocInfo {
         this.type = type;
         this.url=url;
         this.id=id;
+        this.email =email;
     }
 
 }

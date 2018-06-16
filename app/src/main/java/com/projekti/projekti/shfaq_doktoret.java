@@ -35,14 +35,17 @@ public class shfaq_doktoret extends AppCompatActivity {
         doctors=new ArrayList<Doctor>();
 
         //FirebaseDatabase database=FirebaseDatabase.getInstance();
-        mref = FirebaseDatabase.getInstance().getReference("doctors");
+        mref = FirebaseDatabase.getInstance().getReference("users");
 
         mref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot.exists()){
                 Doctor doc=dataSnapshot.getValue(Doctor.class);
-                doctors.add(doc);
-            }
+                String type=doc.getType();
+                if (type.equals("doctor")){
+                doctors.add(doc);}
+            }}
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -51,6 +54,7 @@ public class shfaq_doktoret extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
+
 
             }
 
@@ -77,6 +81,7 @@ public class shfaq_doktoret extends AppCompatActivity {
         this.listViewDoctors=findViewById(R.id.listViewDoctors);
         this.listViewDoctors.setAdapter(new DoktorListAdapter(this,doctors));
         //i merr te dhanat prej liste i qon ne DatePicker activity
+        
         listViewDoctors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -85,6 +90,7 @@ public class shfaq_doktoret extends AppCompatActivity {
                 objIntent.putExtra("docId",doctors.get(position).getId().toString());
                 objIntent.putExtra("docLastName",doctors.get(position).getLastName().toString());
                 objIntent.putExtra("hospital",doctors.get(position).getHospital().toString());
+                objIntent.putExtra("location",doctors.get(position).getAddress().toString());
                 //objIntent.putExtra("location",doctors.get(position).get().toString());
                 startActivity(objIntent);
                 //Toast.makeText(shfaq_doktoret.this, "sdbhfhs", Toast.LENGTH_SHORT).show();

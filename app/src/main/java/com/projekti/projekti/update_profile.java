@@ -51,19 +51,23 @@ public class update_profile extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
 
         firebaseAuth =FirebaseAuth.getInstance();
-        databaseReference= FirebaseDatabase.getInstance().getReference("pacients");
+        databaseReference= FirebaseDatabase.getInstance().getReference("users");
+        if(firebaseAuth.getCurrentUser() == null){
+            //closing this activity
+            finish();
+            //starting login activity
+            startActivity(new Intent(this, MainActivity.class));
+        }
 
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("pacients");
+
+        databaseReference= FirebaseDatabase.getInstance().getReference("users");
         etFirstName=(EditText)findViewById(R.id.etFirstName);
         etLastName=(EditText)findViewById(R.id.etLastName);
         etPhone=(EditText)findViewById(R.id.etPhone);
         etAddress=(EditText)findViewById(R.id.etAddres);
         etType=(EditText)findViewById(R.id.etType);
         btnSaveInfo=(Button) findViewById(R.id.btnSaveInfo);
-
-
-        FirebaseUser user=firebaseAuth.getCurrentUser();
 
 
 
@@ -94,6 +98,9 @@ public class update_profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveUserInfo();
+                Intent objIntent=new Intent(update_profile.this,Profili_pacientit.class);
+                startActivity(objIntent);
+                finish();
             }
         });
 
@@ -113,10 +120,10 @@ public class update_profile extends AppCompatActivity {
 
         PacInfo userInfo=new PacInfo(firstName,lastName,address,phone,type,user.getPhotoUrl().toString(),user.getUid().toString());
         //FirebaseUser user=firebaseAuth.getCurrentUser();
-        String uploadId=databaseReference.push().getKey();
+        //String uploadId=databaseReference.push().getKey();
 
 
-        FirebaseDatabase.getInstance().getReference("pacients")
+        FirebaseDatabase.getInstance().getReference("users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(userInfo);
         Toast.makeText(this, "Informatio Saved", Toast.LENGTH_SHORT).show();
     }
@@ -197,11 +204,11 @@ public class update_profile extends AppCompatActivity {
     private void uploadImageToFirebaseStorage() {
         StorageReference profileImageRef= FirebaseStorage.getInstance().getReference("profilepics/"+System.currentTimeMillis()+".jpg");
         if(uriProfileImage!=null){
-           //progressBar.setVisibility(View.VISIBLE);
+           progressBar.setVisibility(View.VISIBLE);
             profileImageRef.putFile(uriProfileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                 //   progressBar.setVisibility(View.GONE);
+                  progressBar.setVisibility(View.GONE);
                     profileImgUrl=taskSnapshot.getDownloadUrl().toString();
 
 

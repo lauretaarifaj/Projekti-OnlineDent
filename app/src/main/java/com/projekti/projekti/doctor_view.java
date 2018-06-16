@@ -59,11 +59,11 @@ public class doctor_view extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
         }
 
-        email=(TextView)findViewById(R.id.emailDoc);
-        profili=(TextView)findViewById(R.id.Profili);
+        //email=(TextView)findViewById(R.id.emailDoc);
+        //profili=(TextView)findViewById(R.id.Profili);
         appointDoc=(TextView)findViewById(R.id.Appoint);
         appointments=(TextView)findViewById(R.id.Appointments);
-        location=(TextView)findViewById(R.id.docLocation);
+        //location=(TextView)findViewById(R.id.docLocation);
         logout=(TextView)findViewById(R.id.Logout);
         username=(TextView)findViewById(R.id.displayDocName);
 
@@ -73,36 +73,35 @@ public class doctor_view extends AppCompatActivity {
 
 
 
-       /* btnRezervo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Profili_pacientit.this, "Rezervo", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
-
-
-
-        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-        email.setText(user.getEmail());
+        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+        //email.setText(user.getEmail());
         username.setText(user.getDisplayName());
+
         if(user.getPhotoUrl()!=null){
         String url=user.getPhotoUrl().toString();
         Glide.with(getApplicationContext()).load(url).into(imgView);}
 
+        imgView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent objIntent=new Intent(doctor_view.this,DoctorInfo.class);
+                startActivity(objIntent);
+            }
+        });
 
 
 
 
 
-        profili.setOnClickListener(new View.OnClickListener() {
+
+      /*  profili.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent objIntent=new Intent(doctor_view.this,DoctorInfo.class);
                 startActivity(objIntent);
 
             }
-        });
+        });*/
         appointments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,16 +112,17 @@ public class doctor_view extends AppCompatActivity {
         appointDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent objIntent=new Intent(doctor_view.this,shfaq_doktoret.class);
+                Intent objIntent=new Intent(doctor_view.this,shto_termin.class);
                 startActivity(objIntent);
             }
         });
+        /*
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(doctor_view.this, "location", Toast.LENGTH_SHORT).show();
-            }
-        });
+                Intent objIntent=new Intent(doctor_view.this,location.class);
+                startActivity(objIntent);            }
+        });*/
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

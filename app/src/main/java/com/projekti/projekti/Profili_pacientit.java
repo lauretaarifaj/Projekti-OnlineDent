@@ -3,6 +3,7 @@ package com.projekti.projekti;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -27,19 +28,19 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.hitomi.cmlibrary.CircleMenu;
+import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 import java.io.IOException;
 
 public class Profili_pacientit extends AppCompatActivity  {
-    private TextView emri,email,profili,appointDoc,location,appointments,logout;
-    //private static final int CHOOSE_IMAGE = 101;
+   /* String arrayName[]= {"Add Appointment",
+                          "Appointments",
+                          "Update Profile"
+    };*/
+    private TextView email,profili,appointDoc,location,appointments,logout;
     ImageView imageView;
-    //Button choose;
-    //Uri uriProfileImage;
-    //ProgressBar progressBar;
-    //String profileImgUrl;
     FirebaseAuth mAuth;
-    EditText editText;
     private TextView username;
 
     @Override
@@ -56,66 +57,71 @@ public class Profili_pacientit extends AppCompatActivity  {
             //starting login activity
             startActivity(new Intent(this, MainActivity.class));
         }
+        /*
+        CircleMenu circleMenu=(CircleMenu)findViewById(R.id.circleMenu);
+        circleMenu.setMainMenu(Color.parseColor("red"),R.drawable.plus,R.drawable.plus)
+        .addSubMenu(Color.parseColor("red"),R.drawable.plus)
+        .addSubMenu(Color.parseColor("red"),R.drawable.ic_calendar)
+        .addSubMenu(Color.parseColor("red"),R.drawable.ic_action_person)
+        .setOnMenuSelectedListener(new OnMenuSelectedListener() {
+            @Override
+            public void onMenuSelected(int i) {
+                switch (i){
+                    case 0:
+                        Intent objIntent=new Intent(Profili_pacientit.this,shfaq_doktoret.class);
+                        startActivity(objIntent);
+                        break;
+                    case 1:
+                        Intent intent=new Intent(Profili_pacientit.this,shfaq_terminet.class);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        Intent intent1=new Intent(Profili_pacientit.this,update_profile.class);
+                        startActivity(intent1);
+                        break;
 
-        email=(TextView)findViewById(R.id.emailPac);
-        profili=(TextView)findViewById(R.id.tvProfili);
+
+                }
+
+               // Toast.makeText(Profili_pacientit.this, "You selected"+arrayName[i], Toast.LENGTH_SHORT).show();
+
+            }
+        });*/
+
+        //email=(TextView)findViewById(R.id.emailPac);
+        //profili=(TextView)findViewById(R.id.tvProfili);
         appointDoc=(TextView)findViewById(R.id.tvAppoint);
         appointments=(TextView)findViewById(R.id.tvAppointments);
-        location=(TextView)findViewById(R.id.tvLocation);
+        //location=(TextView)findViewById(R.id.tvLocation);
         logout=(TextView)findViewById(R.id.tvLogout);
         username=(TextView)findViewById(R.id.displayName);
 
         imageView=(ImageView)findViewById(R.id.fotoProfil);
         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-        //Glide.with(context).load(doctors.get(position).getUrl()).into(img);
+
         if(user.getPhotoUrl()!=null){
         String url=user.getPhotoUrl().toString();
        Glide.with(getApplicationContext()).load(url).into(imageView);}
-        //String img=user.getPhotoUrl();
-        //choose=(Button)findViewById(R.id.zgjedh);
-        //editText=(EditText)findViewById(R.id.displayName);
 
-        //progressBar=findViewById(R.id.progress_bar);
-//e kom myt ni mickoj ne ekran sa mire qe spo ta zen pamjen ty ahhaha. Hahahahaha ewwwww, qu heke!!!!hahahah (se qat pjese spe shoh)
-       /* btnRezervo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Profili_pacientit.this, "Rezervo", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
-
-        //FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-        email.setText(user.getEmail());
-        //editText.setText(user.getDisplayName());
+        //email.setText(user.getEmail());
         username.setText(user.getDisplayName());
-/*
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showImageChooser();
-
-
+                Intent objIntent=new Intent(Profili_pacientit.this,update_profile.class);
+                startActivity(objIntent);
             }
         });
-        loadUserInfo();
 
-        choose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveUserInformation();
 
-            }
-        });*/
-
-        profili.setOnClickListener(new View.OnClickListener() {
+       /* profili.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent objIntent=new Intent(Profili_pacientit.this,update_profile.class);
                 startActivity(objIntent);
 
             }
-        });
+        });*/
         appointments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,96 +156,4 @@ public class Profili_pacientit extends AppCompatActivity  {
             startActivity(new Intent(this, MainActivity.class));
         }
     }
-/*
-    private void loadUserInfo() {
-
-        FirebaseUser user=mAuth.getCurrentUser();
-
-        if(user!=null) {
-            if (user.getPhotoUrl() != null) {
-                Glide.with(this).load(user.getPhotoUrl().toString()).into(imageView);
-            }
-            if(user.getDisplayName()!=null) {
-            editText.setText(user.getDisplayName());
-            }
-
-        }
-
-    }
-
-    private void saveUserInformation() {
-        String displayName=editText.getText().toString();
-        FirebaseUser user=mAuth.getCurrentUser();
-        if(displayName.isEmpty()){
-            editText.setError("Name required");
-            editText.requestFocus();
-            return;
-        }
-        if (user!=null && profileImgUrl!=null){
-            UserProfileChangeRequest profileChangeRequest=new UserProfileChangeRequest.Builder()
-                    .setDisplayName(displayName)
-                    .setPhotoUri(Uri.parse(profileImgUrl)).build();
-            user.updateProfile(profileChangeRequest)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(Profili_pacientit.this, "Profile updated", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-
-        }
-
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==CHOOSE_IMAGE && resultCode==RESULT_OK && data !=null && data.getData()!=null){
-
-            uriProfileImage=data.getData();
-            try {
-                //E merr foton e qet ne imageview
-                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uriProfileImage);
-                imageView.setImageBitmap(bitmap);
-
-                uploadImageToFirebaseStorage();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-    private void uploadImageToFirebaseStorage() {
-        StorageReference profileImageRef= FirebaseStorage.getInstance().getReference("profilepics/"+System.currentTimeMillis()+".jpg");
-        if(uriProfileImage!=null){
-            progressBar.setVisibility(View.VISIBLE);
-            profileImageRef.putFile(uriProfileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    progressBar.setVisibility(View.GONE);
-                    profileImgUrl=taskSnapshot.getDownloadUrl().toString();
-
-
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(Profili_pacientit.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }
-
-    private void showImageChooser(){
-        Intent intent=new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Select profile image"),CHOOSE_IMAGE);
-    }*/
 }

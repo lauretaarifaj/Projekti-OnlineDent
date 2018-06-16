@@ -90,6 +90,9 @@ public class DoktorListAdapter extends ArrayAdapter<Doctor>  {
         TextView tvPhone=view.findViewById(R.id.tvPhone);
         tvPhone.setText(String.valueOf(doctors.get(position).getPhone()));
 
+        TextView tvLocation=view.findViewById(R.id.tvLocation);
+        tvLocation.setText(String.valueOf(doctors.get(position).getAddress()));
+
 
 
 
