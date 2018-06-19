@@ -58,6 +58,7 @@ public class registerDoctor extends AppCompatActivity implements View.OnClickLis
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
         }
+
         progressDialog.setMessage("Registering Please Wait...");
         progressDialog.show();
         firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -66,7 +67,7 @@ public class registerDoctor extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             finish();
-                            startActivity(new Intent(getApplicationContext(), doctor_view.class));
+                            startActivity(new Intent(getApplicationContext(), DoctorInfo.class));
                         } else {
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
                                 progressDialog.dismiss();

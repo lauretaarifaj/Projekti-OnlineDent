@@ -41,11 +41,11 @@ public class shfaq_doktoret extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if(dataSnapshot.exists()){
-                Doctor doc=dataSnapshot.getValue(Doctor.class);
-                String type=doc.getType();
-                if (type.equals("doctor")){
-                doctors.add(doc);}
-            }}
+                    Doctor doc=dataSnapshot.getValue(Doctor.class);
+                    String type=doc.getType();
+                    if (type.equals("doctor")){
+                        doctors.add(doc);}
+                }}
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -73,7 +73,7 @@ public class shfaq_doktoret extends AppCompatActivity {
 
 
 
-       //doctors.add(new Doctor("Laureta ","Arifaj","LA","jsdfo","sdi","sdi","doctor","123"));
+        //doctors.add(new Doctor("Laureta ","Arifaj","LA","jsdfo","sdi","sdi","doctor","123"));
 
 
 
@@ -81,7 +81,7 @@ public class shfaq_doktoret extends AppCompatActivity {
         this.listViewDoctors=findViewById(R.id.listViewDoctors);
         this.listViewDoctors.setAdapter(new DoktorListAdapter(this,doctors));
         //i merr te dhanat prej liste i qon ne DatePicker activity
-        
+
         listViewDoctors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

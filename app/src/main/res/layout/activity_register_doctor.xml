@@ -30,7 +30,7 @@
         android:layout_below="@+id/etEmail"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password"
+        android:hint="Fjalekalimi"
         android:drawableLeft="@drawable/ic_action_pass"
         android:textColor="#fff"
         android:textColorHint="#fff"/>
@@ -42,7 +42,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/etPassword"
         android:layout_marginTop="28dp"
-        android:text="Register"
+        android:text="Regjistrohu"
         android:textSize="18sp"
         android:textColor="#f16f7d"
 

@@ -35,7 +35,6 @@ public class DoktorListAdapter extends ArrayAdapter<Doctor>  {
 
     private Context context;
     private List<Doctor> doctors;
-    private Button btnRezervo;
 
 
     public DoktorListAdapter(Context context, List<Doctor> doctors){
@@ -53,27 +52,15 @@ public class DoktorListAdapter extends ArrayAdapter<Doctor>  {
 
         //E vendos foton prej firebase ne imageView
         ImageView img=(ImageView)view.findViewById(R.id.imageView);
-        //Bitmap bitmap= BitmapFactory.decodeResource(getRecources(),R.drawable.stlsm);
-
-
-
-
         Glide.with(context).load(doctors.get(position).getUrl()).into(img);
         
-        btnRezervo=(Button)view.findViewById(R.id.appoint);
-        btnRezervo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         
 
 
 
         TextView tvName=view.findViewById(R.id.tvName);
-        tvName.setText(doctors.get(position).getFirstName());
+        tvName.setText("Dr."+doctors.get(position).getFirstName()+" "+doctors.get(position).getLastName());
 
         //TextView tvLastName=view.findViewById(R.id.tvlastName);
         //tvLastName.setText(doctors.get(position).getLastName());

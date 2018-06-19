@@ -16,12 +16,14 @@ public class Appointment {
     public String nrPersonal;
     public String docfirstname;
     public String doclastname;
+    public String emriPacientit;
+
 
 
     public Appointment() {
     }
 
-    public Appointment(String patientId, String doctorId, String time, String date, String hospital, String nrPersonal,String docfirstname,String doclastname) {
+    public Appointment(String patientId, String doctorId, String time, String date, String hospital, String nrPersonal,String docfirstname,String doclastname,String emriPacientit) {
         this.patientId = patientId;
         this.doctorId = doctorId;
         this.time = time;
@@ -30,7 +32,15 @@ public class Appointment {
         this.nrPersonal = nrPersonal;
         this.docfirstname=docfirstname;
         this.doclastname=doclastname;
+        this.emriPacientit=emriPacientit;
 
+    }
+    public String getEmriPacientit() {
+        return emriPacientit;
+    }
+
+    public void setEmriPacientit(String emriPacientit) {
+        this.emriPacientit = emriPacientit;
     }
 
     public String getPatientId() {

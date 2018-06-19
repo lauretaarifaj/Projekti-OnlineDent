@@ -41,10 +41,10 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
 
 
         TextView tvNameDoc=view.findViewById(R.id.tvDoktoriFirstName);
-        tvNameDoc.setText(appointments.get(position).getDocfirstname());
+        tvNameDoc.setText("Dr."+appointments.get(position).getDocfirstname()+" "+appointments.get(position).getDoclastname());
 
-        TextView LastName=view.findViewById(R.id.tvDoktoriLastName);
-        LastName.setText(appointments.get(position).getDoclastname());
+        //TextView LastName=view.findViewById(R.id.tvDoktoriLastName);
+        //LastName.setText(appointments.get(position).getDoclastname());
 
         TextView Spitali=view.findViewById(R.id.tvSpitali);
         Spitali.setText(appointments.get(position).getHospital());
@@ -54,6 +54,9 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
 
         TextView Ora=view.findViewById(R.id.ora);
         Ora.setText(String.valueOf(appointments.get(position).getTime()));
+
+        TextView EmriPacientit=view.findViewById(R.id.emriPacientit);
+        EmriPacientit.setText(String.valueOf(appointments.get(position).getEmriPacientit()));
 
 
 

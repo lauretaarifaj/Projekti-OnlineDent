@@ -1,21 +1,16 @@
 package com.projekti.projekti;
 
 //import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.Query;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,11 +21,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.projekti.projekti.R;
-import com.projekti.projekti.SecondActivity;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnlogin;
@@ -75,63 +65,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String password=etPassword.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ju lutem shkruani emailen!", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
+        else if(TextUtils.isEmpty(password)){
+            Toast.makeText(this, "Ju lutem shkruani fjalekalimin!", Toast.LENGTH_SHORT).show();
             return;
         }
 
         //progressDialog.setMessage("Logining...");
         //progressDialog.show();
-        firebaseAuth.signInWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        //progressDialog.dismiss();
-                        if(task.isSuccessful()){
+        else {
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            //progressDialog.dismiss();
+                            if (task.isSuccessful()) {
 
-                            //finish();
-                            //startActivity(new Intent(getApplicationContext(),doctor_view.class));
+                                //finish();
+                                //startActivity(new Intent(getApplicationContext(),doctor_view.class));
 
-                            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                            String userID=currentUser.getUid();
-                            databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                                String userID = currentUser.getUid();
+                                databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
 
 
-                            databaseReference.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                   // finish();
-                                //startActivity(new Intent(MainActivity.this,doctor_view.class));
+                                databaseReference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        // finish();
+                                        //startActivity(new Intent(MainActivity.this,doctor_view.class));
 
-                                    String userType = dataSnapshot.child("type").getValue().toString();
-                                    if(userType.equals("pacient")){
-                                        Intent intentResident = new Intent(MainActivity.this, Profili_pacientit.class);
-                                        intentResident.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intentResident);
-                                        //finish();
+                                        String userType = dataSnapshot.child("type").getValue().toString();
+                                        if (userType.equals("pacient")) {
+                                            Intent intentResident = new Intent(MainActivity.this, Profili_pacientit.class);
+                                            intentResident.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intentResident);
+                                            //finish();
 
-                                    }else if (userType.equals("doctor")){
-                                        Intent intentResident = new Intent(MainActivity.this, doctor_view.class);
-                                        intentResident.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intentResident);
-                                        //finish();
+                                        } else if (userType.equals("doctor")) {
+                                            Intent intentResident = new Intent(MainActivity.this, doctor_view.class);
+                                            intentResident.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intentResident);
+                                            //finish();
+
+                                        }
+
 
                                     }
 
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
 
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
+                                    }
+                                });
+                            }
                         }
-                    }
-                });
+                    });
+        }
 
 
     }

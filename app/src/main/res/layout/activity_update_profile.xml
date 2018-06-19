@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please select first profile image and display name"
+        android:text="Ju lutem zgjedheni se pari foton e profilit dhe username-in"
         android:textColor="#FFF"
         android:id="@+id/textView8" />
 
@@ -25,7 +25,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@+id/textView8"
-        android:src="@drawable/doc" />
+        android:src="@drawable/ic_menu_camera" />
 
     <EditText
         android:id="@+id/editText2"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/Update"
         android:layout_centerHorizontal="true"
-        android:hint="Display Name"
+        android:hint="Username"
         android:textColor="#FFF"
         android:textColorHint="#FFF" />
 
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/fotojaProfilit"
         android:layout_alignStart="@+id/editText2"
-        android:text="Update" />
+        android:text="Zgjedh" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -60,7 +60,7 @@
         android:layout_below="@+id/relativeLayout"
         android:layout_marginTop="49dp"
         android:ems="10"
-        android:hint="First Name"
+        android:hint="Emri"
         android:inputType="textPersonName"
         android:textColor="#fff"
         android:textColorHint="#fff" />
@@ -80,7 +80,7 @@
         android:layout_alignEnd="@+id/etAddres"
         android:layout_toEndOf="@+id/etFirstName"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="Mbiemri"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:textColor="#fff"
@@ -93,9 +93,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/etFirstName"
-        android:drawableLeft="@drawable/ic_action_email"
+        android:drawableLeft="@drawable/ic_location"
         android:ems="10"
-        android:hint="Address"
+        android:hint="Adresa"
         android:inputType="textEmailAddress"
         android:textColor="#fff"
         android:textColorHint="#fff" />
@@ -108,7 +108,7 @@
         android:layout_below="@+id/etAddres"
         android:drawableLeft="@drawable/ic_phone"
         android:ems="10"
-        android:hint="Phone"
+        android:hint="Telefoni"
         android:inputType="phone"
         android:textColor="#fff"
         android:textColorHint="#fff" />
@@ -134,7 +134,7 @@
         android:layout_marginBottom="75dp"
         android:layout_toEndOf="@+id/progress_bar"
         android:background="@drawable/background_login"
-        android:text="Save"
+        android:text="Ruaj"
         android:textColor="#f16f7d"
         android:textSize="18sp" />
 

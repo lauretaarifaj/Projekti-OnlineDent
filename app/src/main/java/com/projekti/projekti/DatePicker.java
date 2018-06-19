@@ -5,24 +5,36 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
-public class DatePicker extends AppCompatActivity
+public class DatePicker extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
+    public String koha,dataF,text,H,D;
+    public TextView prova;
     private TextView tv,time,docFirstName,docLastName;
     private Button btnAppoint;
+    private String emriDoc,mbiemriDoc;
     Calendar mCurrentDate;
     Calendar currentTime;
     int hour,minute;
@@ -58,7 +70,7 @@ public class DatePicker extends AppCompatActivity
         }
 
         docFirstName=(TextView)findViewById(R.id.docFirstName);
-        docLastName=(TextView)findViewById(R.id.docLastName);
+       // docLastName=(TextView)findViewById(R.id.docLastName);
         NrPersonal=(EditText) findViewById(R.id.NrPersonal);
         userName=(TextView)findViewById(R.id.userName);
 
@@ -68,14 +80,21 @@ public class DatePicker extends AppCompatActivity
         //i merr te dhanat prej shfaq_doktoret
         Bundle mbundle=getIntent().getExtras();
         if (mbundle!=null){
-            docFirstName.setText(mbundle.getString("tvName"));
+            emriDoc=(mbundle.getString("tvName"));
              doctorId=(mbundle.getString("docId"));
-             docLastName.setText(mbundle.getString("docLastName"));
+             mbiemriDoc=(mbundle.getString("docLastName"));
              hospital=(mbundle.getString("hospital"));
 
-
+            docFirstName.setText(emriDoc+" "+mbiemriDoc);
 
         }
+
+
+        Spinner spinner=findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.orari,android.R.layout.simple_spinner_item);
+adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+spinner.setAdapter(adapter);
+spinner.setOnItemSelectedListener(this);
 
 
 
@@ -85,38 +104,8 @@ public class DatePicker extends AppCompatActivity
 
 
         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-
+        //E shfaq emrin e pacientit
         userName.setText(user.getDisplayName());
-
-        //per me e zgjedh oren
-        time=(TextView)findViewById(R.id.time);
-        currentTime=Calendar.getInstance();
-        hour=currentTime.get(Calendar.HOUR_OF_DAY);
-        minute=currentTime.get(Calendar.MINUTE);
-
-        selectedTimeFormat(hour);
-
-        time.setText(hour+" : "+minute+" "+format);
-
-        time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerDialog timePickerDialog=new TimePickerDialog(DatePicker.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        selectedTimeFormat(hourOfDay);
-                        time.setText(hourOfDay+" : "+minute+ " "+format);
-
-                    }
-                },hour,minute,true);
-                timePickerDialog.show();
-            }
-        });
-
-
-
-
-
 
         //Per me e zgjedh daten
         tv=(TextView)findViewById(R.id.tv);
@@ -141,23 +130,76 @@ public class DatePicker extends AppCompatActivity
                 datePickerDialog.show();
             }
         });
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("appointments");
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if (dataSnapshot.exists()){
+                    Appointment appoint=dataSnapshot.getValue(Appointment.class);
+                     H=appoint.getTime().toString();
+                     D=appoint.getDate().toString();
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
         btnAppoint=(Button)findViewById(R.id.btnRezervo);
         btnAppoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String numriPersonal=NrPersonal.getText().toString().trim();
-                if (numriPersonal!=null) {
-                    saveAppointment();
+                String numriPersonal=NrPersonal.getText().toString();
+                String Hour=text.toString();
+                String Data=tv.getText().toString();
+                if (TextUtils.isEmpty(numriPersonal)) {
+
+
+                    Toast.makeText(DatePicker.this, "Ju lutem shkruani numrin personal", Toast.LENGTH_SHORT).show();
+                    return;
+
+
+
+
                 }
-                else{
-                    Toast.makeText(DatePicker.this, "Please write your personal number to make an appointment", Toast.LENGTH_SHORT).show();
+                else if(Hour.equals(H) && Data.equals(D)) {
+                    Toast.makeText(DatePicker.this, "Termini i zene", Toast.LENGTH_SHORT).show();
+
+
                 }
+
+
+                    else {
+                    saveAppointment();}
+
 
 
             }
         });
 
-    }
+    }/*
     public void selectedTimeFormat(int hour){
         if(hour==0){
             hour+=12;
@@ -173,29 +215,40 @@ public class DatePicker extends AppCompatActivity
         else{
             format="AM";
         }
-    }
+    }*/
     //I run te dhanat ne firebase te appoint
     private void saveAppointment(){
 
         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
         String patientId = user.getUid().toString().trim();
         String date = tv.getText().toString().trim();
-        String timee = time.getText().toString().trim();
+        String timee = text.toString().trim();
         String nrPersonal = NrPersonal.getText().toString().trim();
-        String docfirstname=docFirstName.getText().toString().trim();
-        String doclastname=docLastName.getText().toString().trim();
+        String docfirstname=emriDoc.toString().trim();
+        String doclastname=mbiemriDoc.toString().trim();
+        String username=userName.getText().toString().trim();
 
 
-        Appointment appointment=new Appointment(patientId,doctorId,timee,date,hospital,nrPersonal,docfirstname,doclastname);
+        Appointment appointment=new Appointment(patientId,doctorId,timee,date,hospital,nrPersonal,docfirstname,doclastname,username);
 
 
         String id=databaseReference.push().getKey();
 
         databaseReference.child(id).setValue(appointment);
-        Toast.makeText(this, "Appointment is set", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Rezervimi u krye me sukses.", Toast.LENGTH_SHORT).show();
 
 
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+         text=parent.getItemAtPosition(position).toString();
+       // Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

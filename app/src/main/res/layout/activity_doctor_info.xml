@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please select first profile image and display name"
+            android:text="Ju lutem zgjedheni se pari foton e profilit dhe username-in"
             android:textColor="#FFF"
             android:id="@+id/textView8" />
 
@@ -31,7 +31,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="17dp"
             android:layout_marginTop="17dp"
-            android:src="@drawable/logofinal" />
+            android:src="@drawable/ic_menu_camera" />
 
         <EditText
             android:id="@+id/editText3"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/Uupdate"
             android:layout_alignStart="@+id/Uupdate"
-            android:hint="Display Name"
+            android:hint="Username"
             android:textColor="#FFF"
             android:textColorHint="#FFF" />
 
@@ -50,7 +50,7 @@
             android:layout_alignBottom="@+id/footojaProfilit"
             android:layout_marginStart="48dp"
             android:layout_toEndOf="@+id/footojaProfilit"
-            android:text="Update" />
+            android:text="Zgjedhe" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -66,7 +66,7 @@
         android:layout_above="@+id/etAddres"
         android:layout_alignParentStart="true"
         android:ems="10"
-        android:hint="First Name"
+        android:hint="Emri"
         android:inputType="textPersonName"
         android:textColor="#fff"
         android:textColorHint="#fff" />
@@ -78,7 +78,7 @@
         android:layout_above="@+id/etAddres"
         android:layout_alignParentEnd="true"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="Mbiemri"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:textColor="#fff"
@@ -99,7 +99,7 @@
         android:layout_alignParentStart="true"
         android:drawableLeft="@drawable/ic_location"
         android:ems="10"
-        android:hint="Address"
+        android:hint="Lokacioni"
         android:inputType="textEmailAddress"
         android:textColor="#fff"
         android:textColorHint="#fff"
@@ -113,7 +113,7 @@
         android:layout_alignParentStart="true"
         android:drawableLeft="@drawable/ic_phone"
         android:ems="10"
-        android:hint="Phone"
+        android:hint="Telefoni"
         android:inputType="phone"
         android:textColor="#fff"
         android:textColorHint="#fff" />
@@ -126,7 +126,7 @@
         android:layout_alignParentStart="true"
         android:drawableLeft="@drawable/ic_speciality"
         android:ems="10"
-        android:hint="Speciality"
+        android:hint="Specializimi"
         android:inputType="textEmailAddress"
         android:textColor="#fff"
         android:textColorHint="#fff" />
@@ -139,7 +139,7 @@
         android:layout_alignParentStart="true"
         android:drawableLeft="@drawable/ic_hospital"
         android:ems="10"
-        android:hint="Hospital"
+        android:hint="Spitali"
         android:inputType="textEmailAddress"
         android:textColor="#fff"
         android:textColorHint="#fff" />
@@ -166,7 +166,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="29dp"
         android:background="@drawable/background_login"
-        android:text="Save"
+        android:text="Ruaj"
         android:textColor="#f16f7d"
         android:textSize="18sp" />
 

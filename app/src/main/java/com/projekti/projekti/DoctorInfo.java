@@ -137,6 +137,8 @@ public class DoctorInfo extends AppCompatActivity {
             public void onClick(View v) {
 
                 saveDocInfo();
+                Intent objIntent=new Intent(DoctorInfo.this,doctor_view.class);
+                startActivity(objIntent);
 
             }
         });
@@ -273,6 +275,7 @@ public class DoctorInfo extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"Select profile image"),CHOOSE_IMAGE);
     }
+    //Per me pyt per me shfrytzu lokacionin
     private void requestPermission() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

@@ -70,7 +70,7 @@ public class registerPacient extends AppCompatActivity implements View.OnClickLi
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), Profili_pacientit.class));
+                                startActivity(new Intent(getApplicationContext(), update_profile.class));
                             } else {
                                 if(task.getException() instanceof FirebaseAuthUserCollisionException){
                                     //progressDialog.dismiss();

@@ -29,13 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
-        <activity android:name=".RegisterActivity" />
         <activity android:name=".registerDoctor" />
         <activity android:name=".registerPacient" />
         <activity android:name=".shfaq_doktoret" />
         <activity android:name=".DoctorInfo" />
-        <activity android:name=".Pacient_view" />
         <activity android:name=".Profili_pacientit" />
         <activity android:name=".DatePicker" />
         <activity android:name=".doctor_view" />
@@ -55,7 +52,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAaV8VE4nLsTODnmbfdtn_S9DFbcZ23hCI" />
 
-        <activity android:name=".location" />
         <activity android:name=".shto_termin"></activity>
     </application>
 
