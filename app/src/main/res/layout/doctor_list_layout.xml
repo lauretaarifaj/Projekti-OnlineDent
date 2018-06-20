@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -76,15 +76,15 @@
         android:text="Location" />
 
     <TextView
-        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/backgound_signup"
-        android:text="APPOINT"
-        android:textColor="#000" />
+        android:layout_alignStart="@+id/tvLocation"
+        android:layout_below="@+id/tvLocation"
+        android:layout_marginTop="11dp"
+        android:textColor="@color/colorAccent"
+        android:text="prekni kudo per te bere rezervimin" />
+
+
 
 </RelativeLayout>
     <LinearLayout

@@ -85,7 +85,7 @@ public class DoctorInfo extends AppCompatActivity {
         getPlace=(TextView)findViewById(R.id.etAddres);
         etSpeciality=(EditText)findViewById(R.id.etSpeciality);
         etHospital=(EditText) findViewById(R.id.etHospital);
-        etType=(EditText) findViewById(R.id.etType);
+        //etType=(EditText) findViewById(R.id.etType);
         attributionText = (WebView) findViewById(R.id.wvAttribution);
 
 
@@ -151,7 +151,7 @@ public class DoctorInfo extends AppCompatActivity {
         String address = getPlace.getText().toString().trim();
         String speciality = etSpeciality.getText().toString().trim();
         String hospital = etHospital.getText().toString().trim();
-        String type = etType.getText().toString().trim();
+        String type = "doctor".toString().trim();
         DocInfo docInfo=new DocInfo(firstName,lastName,address,phone,speciality,hospital,type,user.getPhotoUrl().toString(),user.getUid().toString(),user.getEmail());
 
 

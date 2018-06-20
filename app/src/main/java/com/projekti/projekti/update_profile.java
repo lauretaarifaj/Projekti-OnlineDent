@@ -66,7 +66,7 @@ public class update_profile extends AppCompatActivity {
         etLastName=(EditText)findViewById(R.id.etLastName);
         etPhone=(EditText)findViewById(R.id.etPhone);
         etAddress=(EditText)findViewById(R.id.etAddres);
-        etType=(EditText)findViewById(R.id.etType);
+        //etType=(EditText)findViewById(R.id.etType);
         btnSaveInfo=(Button) findViewById(R.id.btnSaveInfo);
 
 
@@ -116,7 +116,7 @@ public class update_profile extends AppCompatActivity {
         String lastName = etLastName.getText().toString().trim();
         String phone = etPhone.getText().toString().trim();
         String address = etAddress.getText().toString().trim();
-        String type = etType.getText().toString().trim();
+        String type = "pacient".toString().trim();
 
         PacInfo userInfo=new PacInfo(firstName,lastName,address,phone,type,user.getPhotoUrl().toString(),user.getUid().toString());
         //FirebaseUser user=firebaseAuth.getCurrentUser();

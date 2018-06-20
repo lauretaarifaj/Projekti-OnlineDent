@@ -113,18 +113,6 @@
         android:textColor="#fff"
         android:textColorHint="#fff" />
 
-    <EditText
-        android:id="@+id/etType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etPhone"
-        android:layout_toEndOf="@+id/progress_bar"
-        android:drawableLeft="@drawable/ic_action_phone"
-        android:ems="10"
-        android:hint="write pacient or doctor"
-        android:textColor="#fff"
-        android:textColorHint="#fff" />
-
     <Button
         android:id="@+id/btnSaveInfo"
         android:layout_width="match_parent"

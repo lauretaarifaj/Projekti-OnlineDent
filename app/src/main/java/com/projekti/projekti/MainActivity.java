@@ -99,15 +99,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                         String userType = dataSnapshot.child("type").getValue().toString();
                                         if (userType.equals("pacient")) {
-                                            Intent intentResident = new Intent(MainActivity.this, Profili_pacientit.class);
-                                            intentResident.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(intentResident);
+                                            Intent objIntent = new Intent(MainActivity.this, Profili_pacientit.class);
+                                            objIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(objIntent);
                                             //finish();
 
                                         } else if (userType.equals("doctor")) {
-                                            Intent intentResident = new Intent(MainActivity.this, doctor_view.class);
-                                            intentResident.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(intentResident);
+                                            Intent objIntent = new Intent(MainActivity.this, doctor_view.class);
+                                            objIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(objIntent);
                                             //finish();
 
                                         }

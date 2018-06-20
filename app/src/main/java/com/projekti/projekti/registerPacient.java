@@ -59,9 +59,10 @@ public class registerPacient extends AppCompatActivity implements View.OnClickLi
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show();
             return;}
 
-            if (TextUtils.isEmpty(password)) {
+           else if (TextUtils.isEmpty(password)) {
                 Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
             }
+            else {
             progressDialog.setMessage("Registering Please Wait...");
             progressDialog.show();
             firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -72,16 +73,16 @@ public class registerPacient extends AppCompatActivity implements View.OnClickLi
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), update_profile.class));
                             } else {
-                                if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                                if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                     //progressDialog.dismiss();
                                     Toast.makeText(registerPacient.this, "Email is already registered", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
-                                    Toast.makeText(registerPacient.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(registerPacient.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }
                     });
+        }
         }
 
 

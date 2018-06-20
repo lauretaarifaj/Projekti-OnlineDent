@@ -49,6 +49,9 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
         TextView Spitali=view.findViewById(R.id.tvSpitali);
         Spitali.setText(appointments.get(position).getHospital());
 
+        TextView lokacioni=view.findViewById(R.id.tvLokacioni);
+        lokacioni.setText(appointments.get(position).getLocation());
+
         TextView Data=view.findViewById(R.id.data);
         Data.setText(appointments.get(position).getDate());
 
@@ -56,7 +59,7 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
         Ora.setText(String.valueOf(appointments.get(position).getTime()));
 
         TextView EmriPacientit=view.findViewById(R.id.emriPacientit);
-        EmriPacientit.setText(String.valueOf(appointments.get(position).getEmriPacientit()));
+        EmriPacientit.setText("Pacient: "+String.valueOf(appointments.get(position).getEmriPacientit())+" "+String.valueOf(appointments.get(position).getNrPersonal()));
 
 
 

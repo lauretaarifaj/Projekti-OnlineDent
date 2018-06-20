@@ -17,13 +17,13 @@ public class Appointment {
     public String docfirstname;
     public String doclastname;
     public String emriPacientit;
-
+    public String location;
 
 
     public Appointment() {
     }
 
-    public Appointment(String patientId, String doctorId, String time, String date, String hospital, String nrPersonal,String docfirstname,String doclastname,String emriPacientit) {
+    public Appointment(String patientId, String doctorId, String time, String date, String hospital, String nrPersonal,String docfirstname,String doclastname,String emriPacientit,String location) {
         this.patientId = patientId;
         this.doctorId = doctorId;
         this.time = time;
@@ -33,6 +33,7 @@ public class Appointment {
         this.docfirstname=docfirstname;
         this.doclastname=doclastname;
         this.emriPacientit=emriPacientit;
+        this.location=location;
 
     }
     public String getEmriPacientit() {
@@ -106,4 +107,12 @@ public class Appointment {
     public void setDoclastname(String doclastname) {
         this.doclastname = doclastname;
     }
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
 }

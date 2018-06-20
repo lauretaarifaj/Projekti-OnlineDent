@@ -34,7 +34,7 @@ public class DatePicker extends AppCompatActivity implements AdapterView.OnItemS
     public TextView prova;
     private TextView tv,time,docFirstName,docLastName;
     private Button btnAppoint;
-    private String emriDoc,mbiemriDoc;
+    private String emriDoc,mbiemriDoc,location;
     Calendar mCurrentDate;
     Calendar currentTime;
     int hour,minute;
@@ -84,6 +84,7 @@ public class DatePicker extends AppCompatActivity implements AdapterView.OnItemS
              doctorId=(mbundle.getString("docId"));
              mbiemriDoc=(mbundle.getString("docLastName"));
              hospital=(mbundle.getString("hospital"));
+             location=(mbundle.getString("location"));
 
             docFirstName.setText(emriDoc+" "+mbiemriDoc);
 
@@ -227,9 +228,10 @@ spinner.setOnItemSelectedListener(this);
         String docfirstname=emriDoc.toString().trim();
         String doclastname=mbiemriDoc.toString().trim();
         String username=userName.getText().toString().trim();
+        String lokacioni=location.toString().trim();
 
 
-        Appointment appointment=new Appointment(patientId,doctorId,timee,date,hospital,nrPersonal,docfirstname,doclastname,username);
+        Appointment appointment=new Appointment(patientId,doctorId,timee,date,hospital,nrPersonal,docfirstname,doclastname,username,lokacioni);
 
 
         String id=databaseReference.push().getKey();

@@ -55,30 +55,31 @@ public class registerDoctor extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show();
             return;}
 
-        if (TextUtils.isEmpty(password)) {
+        else if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
         }
+        else {
 
-        progressDialog.setMessage("Registering Please Wait...");
-        progressDialog.show();
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), DoctorInfo.class));
-                        } else {
-                            if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                                progressDialog.dismiss();
-                                Toast.makeText(registerDoctor.this, "Email is already registered", Toast.LENGTH_SHORT).show();
-                            }
-                            else{
-                                Toast.makeText(registerDoctor.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+            progressDialog.setMessage("Registering Please Wait...");
+            progressDialog.show();
+            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                finish();
+                                startActivity(new Intent(getApplicationContext(), DoctorInfo.class));
+                            } else {
+                                if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(registerDoctor.this, "Email is already registered", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(registerDoctor.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
-                    }
-                });
+                    });
+        }
     }
 
 
