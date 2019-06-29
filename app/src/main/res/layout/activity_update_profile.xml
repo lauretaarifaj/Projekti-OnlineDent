@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context="com.projekti.projekti.update_profile">
 
     <RelativeLayout
@@ -16,26 +17,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ju lutem zgjedheni se pari foton e profilit dhe username-in"
         android:textColor="#FFF"
         android:id="@+id/textView8" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fotojaProfilit"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/textView8"
-        android:src="@drawable/ic_menu_camera" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fotojaProfilit"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="43dp"
+            android:src="@drawable/ic_menu_camera" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/Update"
-        android:layout_centerHorizontal="true"
-        android:hint="Username"
-        android:textColor="#FFF"
-        android:textColorHint="#FFF" />
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/textView8"
+            android:layout_marginEnd="91dp"
+            android:hint="Username"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF" />
 
     <Button
         android:id="@+id/Update"
@@ -43,48 +46,51 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/fotojaProfilit"
         android:layout_alignStart="@+id/editText2"
-        android:text="Zgjedh" />
+        android:text="Update" />
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/colorAccent"
             android:layout_marginTop="148dp"></LinearLayout>
    </RelativeLayout>
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <EditText
         android:id="@+id/etFirstName"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout"
         android:layout_marginTop="49dp"
         android:ems="10"
-        android:hint="Emri"
+        android:hint="First Name"
         android:inputType="textPersonName"
         android:textColor="#fff"
         android:textColorHint="#fff" />
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
-
     <EditText
         android:id="@+id/etLastName"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/etFirstName"
-        android:layout_alignEnd="@+id/etAddres"
-        android:layout_toEndOf="@+id/etFirstName"
+        android:layout_below="@+id/etFirstName"
         android:ems="10"
-        android:hint="Mbiemri"
+        android:hint="Last Name
+"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:textColor="#fff"
         android:textColorHint="#fff" />
+</RelativeLayout>
+
+
+
 
 
     <EditText
@@ -95,7 +101,7 @@
         android:layout_below="@+id/etFirstName"
         android:drawableLeft="@drawable/ic_location"
         android:ems="10"
-        android:hint="Adresa"
+        android:hint="Address"
         android:inputType="textEmailAddress"
         android:textColor="#fff"
         android:textColorHint="#fff" />
@@ -108,13 +114,14 @@
         android:layout_below="@+id/etAddres"
         android:drawableLeft="@drawable/ic_phone"
         android:ems="10"
-        android:hint="Telefoni"
+        android:hint="Phone"
         android:inputType="phone"
         android:textColor="#fff"
         android:textColorHint="#fff" />
 
     <Button
         android:id="@+id/btnSaveInfo"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -122,7 +129,7 @@
         android:layout_marginBottom="75dp"
         android:layout_toEndOf="@+id/progress_bar"
         android:background="@drawable/background_login"
-        android:text="Ruaj"
+        android:text="Save"
         android:textColor="#f16f7d"
         android:textSize="18sp" />
 

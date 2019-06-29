@@ -56,7 +56,7 @@ public class DatePicker extends AppCompatActivity implements AdapterView.OnItemS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_picker);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("appointments");
+        databaseReference= FirebaseDatabase.getInstance().getReference("requests");
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -132,7 +132,7 @@ spinner.setOnItemSelectedListener(this);
             }
         });
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("appointments");
+        databaseReference = FirebaseDatabase.getInstance().getReference("requests");
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -193,7 +193,10 @@ spinner.setOnItemSelectedListener(this);
 
 
                     else {
-                    saveAppointment();}
+                    saveAppointment();
+                Intent objIntent=new Intent(DatePicker.this,MainActivity.class);
+                startActivity(objIntent);
+                }
 
 
 
@@ -242,7 +245,7 @@ spinner.setOnItemSelectedListener(this);
 
     }
 
-
+//per spiner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
          text=parent.getItemAtPosition(position).toString();

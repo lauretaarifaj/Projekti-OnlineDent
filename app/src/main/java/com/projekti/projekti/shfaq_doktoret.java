@@ -26,11 +26,18 @@ public class shfaq_doktoret extends AppCompatActivity {
     private DatabaseReference mref;
     private ListView listViewDoctors;
     private List<Doctor> doctors;
+    private String klinika;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shfaq_doktoret);
+
+        Bundle mbundle=getIntent().getExtras();
+        if(mbundle!=null){
+            klinika=(mbundle.getString("Spitali"));
+
+        }
 
         doctors=new ArrayList<Doctor>();
 
@@ -43,9 +50,11 @@ public class shfaq_doktoret extends AppCompatActivity {
                 if(dataSnapshot.exists()){
                     Doctor doc=dataSnapshot.getValue(Doctor.class);
                     String type=doc.getType();
+                    String hospital=doc.getHospital();
                     if (type.equals("doctor")){
-                        doctors.add(doc);}
-                }}
+                        if(hospital.equals(klinika))
+                            doctors.add(doc);
+                }}}
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {

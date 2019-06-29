@@ -18,6 +18,7 @@ public class Appointment {
     public String doclastname;
     public String emriPacientit;
     public String location;
+    public String accept;
 
 
     public Appointment() {
@@ -114,5 +115,6 @@ public class Appointment {
     public void setLocation(String location) {
         this.location = location;
     }
+
 
 }

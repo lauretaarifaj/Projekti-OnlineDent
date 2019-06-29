@@ -13,10 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,11 +43,12 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
-public class DoctorInfo extends AppCompatActivity {
+public class DoctorInfo extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private static final int CHOOSE_IMAGE = 101;
 
 
     private EditText etFirstName,etLastName,etPhone,etSpeciality,etHospital,etType;
+    private String spitali;
     private TextView getPlace;
     private Button btnSaveInfo;
     private ImageView fotojaProfilit;
@@ -74,6 +78,12 @@ public class DoctorInfo extends AppCompatActivity {
             //starting login activity
             startActivity(new Intent(this, MainActivity.class));
         }
+
+        Spinner spinner=findViewById(R.id.spineri);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.spitalet,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
 
         databaseReference= FirebaseDatabase.getInstance().getReference("users")
@@ -150,7 +160,7 @@ public class DoctorInfo extends AppCompatActivity {
         String phone = etPhone.getText().toString().trim();
         String address = getPlace.getText().toString().trim();
         String speciality = etSpeciality.getText().toString().trim();
-        String hospital = etHospital.getText().toString().trim();
+        String hospital = spitali.toString().trim();
         String type = "doctor".toString().trim();
         DocInfo docInfo=new DocInfo(firstName,lastName,address,phone,speciality,hospital,type,user.getPhotoUrl().toString(),user.getUid().toString(),user.getEmail());
 
@@ -234,15 +244,18 @@ public class DoctorInfo extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-        } else if (requestCode == PLACE_PICKER_REQUEST){
+        }
+        //lokacioni
+        else if (requestCode == PLACE_PICKER_REQUEST){
             if (resultCode == RESULT_OK){
                 Place place = PlacePicker.getPlace(DoctorInfo.this, data);
                 getPlace.setText(place.getAddress());
+                /*
                 if (place.getAttributions() == null) {
                     attributionText.loadData("no attribution", "text/html; charset=utf-8", "UFT-8");
                 } else {
                     attributionText.loadData(place.getAttributions().toString(), "text/html; charset=utf-8", "UFT-8");
-                }
+                }*/
             }
         }
     }
@@ -296,6 +309,17 @@ public class DoctorInfo extends AppCompatActivity {
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        spitali=parent.getItemAtPosition(position).toString();
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
 

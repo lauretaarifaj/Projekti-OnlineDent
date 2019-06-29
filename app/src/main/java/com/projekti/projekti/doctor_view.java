@@ -34,7 +34,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 
 public class doctor_view extends AppCompatActivity {
-    private TextView username,email,profili,appointDoc,location,appointments,logout;
+    private TextView username,email,profili,appointDoc,location,appointments,logout,requests;
    private ImageView imgView;
     private FirebaseAuth mAuth;
 
@@ -66,6 +66,7 @@ public class doctor_view extends AppCompatActivity {
         //location=(TextView)findViewById(R.id.docLocation);
         logout=(TextView)findViewById(R.id.Logout);
         username=(TextView)findViewById(R.id.displayDocName);
+        requests=(TextView)findViewById(R.id.Requests);
 
         imgView=(ImageView)findViewById(R.id.imgProfil);
 
@@ -116,6 +117,15 @@ public class doctor_view extends AppCompatActivity {
                 startActivity(objIntent);
             }
         });
+        requests.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent objIntent=new Intent(doctor_view.this,Requests.class);
+                startActivity(objIntent);
+
+            }
+        });
+
         /*
         location.setOnClickListener(new View.OnClickListener() {
             @Override

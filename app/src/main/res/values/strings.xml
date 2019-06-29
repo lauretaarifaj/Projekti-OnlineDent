@@ -9,7 +9,8 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_fragment">FragmentActivity</string>
-
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -23,6 +24,12 @@
         <item>15:00-16:00</item>
 
     </string-array>
+    <string-array name="spitalet">
+        <item>qkuk</item>
+        <item>dent</item>
+        <item>royal</item>
+        <item>medika</item>
 
+    </string-array>
     color colorString;
 </resources>

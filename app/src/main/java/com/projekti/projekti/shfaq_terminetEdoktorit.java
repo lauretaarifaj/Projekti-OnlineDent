@@ -21,14 +21,14 @@ public class shfaq_terminetEdoktorit extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mref;
     private ListView listViewAppointments;
-    private List<Appointment> appointments;
+    private List<Request> appointments;
     private AppointmentListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shfaq_terminet_edoktorit);
-        appointments=new ArrayList<Appointment>();
+        appointments=new ArrayList<Request>();
 
         //FirebaseDatabase database=FirebaseDatabase.getInstance();
         mref = FirebaseDatabase.getInstance().getReference("appointments");
@@ -84,8 +84,10 @@ public class shfaq_terminetEdoktorit extends AppCompatActivity {
                 if (dataSnapshot.exists()){
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()){
 
-                        Appointment appoint=snapshot.getValue(Appointment.class);
-                        appointments.add(appoint);
+                        Request appoint=snapshot.getValue(Request.class);
+                        String accept=appoint.getAccept().toString();
+                        if(accept.equals("accepted")){
+                        appointments.add(appoint);}
                     }
                     adapter.notifyDataSetChanged();
                 }

@@ -132,7 +132,7 @@ public class Profili_pacientit extends AppCompatActivity  {
         appointDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent objIntent=new Intent(Profili_pacientit.this,shfaq_doktoret.class);
+                Intent objIntent=new Intent(Profili_pacientit.this,Hospitals.class);
                 startActivity(objIntent);
             }
         });

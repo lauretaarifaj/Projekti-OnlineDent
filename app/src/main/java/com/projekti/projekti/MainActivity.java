@@ -40,11 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //databaseReference=FirebaseDatabase.getInstance().getReference("doctor");
         firebaseAuth=FirebaseAuth.getInstance();
 
-       /* if(firebaseAuth.getCurrentUser()!= null){
-            //profile activity
-            finish();
-           startActivity(new Intent(getApplicationContext(),doctor_view.class));
-        }*/
 
         //progressDialog=new ProgressDialog(this);
        btnlogin = (Button) findViewById(R.id.btnLogin);
@@ -96,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         // finish();
                                         //startActivity(new Intent(MainActivity.this,doctor_view.class));
-
                                         String userType = dataSnapshot.child("type").getValue().toString();
                                         if (userType.equals("pacient")) {
                                             Intent objIntent = new Intent(MainActivity.this, Profili_pacientit.class);

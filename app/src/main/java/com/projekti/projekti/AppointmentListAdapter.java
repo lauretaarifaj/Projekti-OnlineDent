@@ -1,5 +1,7 @@
 package com.projekti.projekti;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,17 +18,17 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 /**
- * Created by Admin on 6/9/2018.
+ * Created by Admin on 6/9/2019.
  */
 
-public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
+public class AppointmentListAdapter extends ArrayAdapter<Request> {
 
 
     private Context context;
-    private List<Appointment> appointments;
+    private List<Request> appointments;
 
 
-    public AppointmentListAdapter(Context context, List<Appointment> appointments){
+    public AppointmentListAdapter(Context context, List<Request> appointments){
         super(context, R.layout.appointment_list_layout,appointments);
         this.context=context;
         this.appointments=appointments;
@@ -38,6 +40,7 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View view=layoutInflater.inflate(R.layout.appointment_list_layout,parent,false);
+
 
 
         TextView tvNameDoc=view.findViewById(R.id.tvDoktoriFirstName);
@@ -57,6 +60,11 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
 
         TextView Ora=view.findViewById(R.id.ora);
         Ora.setText(String.valueOf(appointments.get(position).getTime()));
+
+        TextView Accept=view.findViewById(R.id.accept);
+        Accept.setText(String.valueOf(appointments.get(position).getAccept()));
+
+
 
         TextView EmriPacientit=view.findViewById(R.id.emriPacientit);
         EmriPacientit.setText("Pacient: "+String.valueOf(appointments.get(position).getEmriPacientit())+" "+String.valueOf(appointments.get(position).getNrPersonal()));

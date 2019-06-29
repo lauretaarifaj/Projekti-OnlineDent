@@ -52,7 +52,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAaV8VE4nLsTODnmbfdtn_S9DFbcZ23hCI" />
 
-        <activity android:name=".shto_termin"></activity>
+        <activity android:name=".shto_termin" />
+        <activity android:name=".Requests" />
+        <activity android:name=".Kerkesa" />
+        <activity android:name=".navigation_drawer" />
+        <activity android:name=".Hospitals"></activity>
     </application>
 
 </manifest>
